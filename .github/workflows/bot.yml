@@ -4,7 +4,7 @@ name: Reddit RSS News Bot
 # be triggered using cron set at a 10 minutes interval.
 on:
   schedule:
-    - cron: "0 */8 * * *"
+    - cron: "0 3,14 * * *"
 
 # 'jobs' are the routines, we only have
 # one when the instance is built.
