@@ -94,7 +94,7 @@ def init_bot():
                         print ('Posted:', url)
         except requests.ConnectionError:
             continue
-    print 'end of script'
+    print('end of script')
 
 
 if __name__ == '__main__':
