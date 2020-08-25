@@ -85,6 +85,9 @@ def init_bot():
                     title = item.find('title').text.split(' - '
                             )[0].split(' | ')[0].strip()
                     url = item.find('link').text
+                    
+                    if 'feedity' in url:
+                        url = item.find('guid').text
 
                     if url not in log and title not in log:
                         reddit.subreddit('lazonacero'
