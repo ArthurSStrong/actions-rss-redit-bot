@@ -42,4 +42,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
-          git diff-index --quiet HEAD || git commit -m "Updated logs." && git push
+          git commit -m "Updated logs." || true
+          git push || true
