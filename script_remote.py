@@ -79,7 +79,7 @@ def init_bot():
 
                 # Only read the first 3 links.
 
-                for item in root.findall('.//item')[:3]:
+                for item in reversed(root.findall('.//item')[:3]):
                     log = load_file(LOG_FILE)
 
                     title = item.find('title').text.split(' - '
