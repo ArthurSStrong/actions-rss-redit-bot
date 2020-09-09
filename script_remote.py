@@ -59,6 +59,22 @@ def update_file(file, data):
     with open(file, 'a', encoding='utf-8') as temp_file:
         temp_file.write(data + '\n')
 
+        
+def resolve_shortener(url):
+    """Gets the real url from the url-shortener service.
+    Parameters
+    ----------    
+    url : str
+        A shortened url.
+    Returns
+    -------
+    str
+        The real url.
+    """
+
+    with requests.head(url) as response:
+        return response.headers["location"]
+
 
 def init_bot():
     """Reads the RSS feed."""
@@ -88,6 +104,9 @@ def init_bot():
                     
                     if 'feedity' in url:
                         url = item.find('guid').text
+                        
+                    if 'google' in url:
+                        url = resolve_shortener(url)
 
                     if url not in log and title not in log:
                         reddit.subreddit('lazonacero'
