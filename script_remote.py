@@ -102,7 +102,7 @@ def init_bot():
                             )[0].split(' | ')[0].strip()
                     url = item.find('link').text
                     
-                    if 'anime' in title.lower()
+                    if 'anime' in title.lower():
                         continue
 
                     if 'feedity' in url:
