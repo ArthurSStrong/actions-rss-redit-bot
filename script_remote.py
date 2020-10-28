@@ -20,6 +20,7 @@ PASSWORD = (os.environ['PASSWORD'] if 'PASSWORD' in os.environ else '')
 
 LOG_FILE = './processed_urls.txt'
 NEWS_URL_FILE = './source_urls.txt'
+STOPWORDS = './stop_words.txt'
 
 
 def load_file(file):
@@ -88,6 +89,8 @@ def init_bot():
 
     rss_urls = load_file(NEWS_URL_FILE)
 
+    stop_words = load_file(STOPWORDS)
+
     for rss_url in rss_urls:
         try:
             with requests.get(rss_url) as response:
@@ -101,8 +104,8 @@ def init_bot():
                     title = item.find('title').text.split(' - '
                             )[0].split(' | ')[0].strip()
                     url = item.find('link').text
-                    
-                    if 'anime' in title.lower():
+
+                    if  any(stop_word in title.lower() for stop_word in stop_words):
                         continue
 
                     if 'feedity' in url:
