@@ -122,6 +122,9 @@ def init_bot():
                         print ('Posted:', url)
         except requests.ConnectionError:
             continue
+        except Exception as ex:
+            print(ex)
+            continue
     print('end of script')
 
 
