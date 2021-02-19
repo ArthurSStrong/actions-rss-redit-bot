@@ -78,3 +78,5 @@ beebies
 socio
 socia
 jr
+chat
+telegram
